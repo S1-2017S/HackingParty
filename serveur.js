@@ -21,6 +21,7 @@ var req_identifier = require("./req_identifier.js");
 
 var req_static = require("./req_static.js");
 var req_erreur = require("./req_erreur.js");
+var req_demarrer_partie = require("./req_demarrer_partie.js");
 
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
@@ -54,6 +55,9 @@ var traite_requete = function (req, res) {
 				break;
 			case '/req_identifier':
 				req_identifier(req, res, query);
+				break;
+			case '/req_demarrer_partie':
+				req_demarrer_partie(req, res, query);
 				break;
 			default:
 				req_static(req, res, query);
