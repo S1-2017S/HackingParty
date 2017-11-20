@@ -11,17 +11,18 @@
 	<table border="1">
 		<tr>
 			<td rowspan="1"> Connexion 
-			<form action="display" method="GET">
-			Identifiant : <input type="text" name="pseudo" value=""><p>
-			Password : <input type="password" name="password" value="">
-			<p>
+			<form action="/req_identifier" method="GET">
+				{erreur} <br>	
+				Identifiant : <input type="text" name="pseudo" value=""><p>
+				Password : <input type="password" name="password" value="">
+				<p>
+				<input type="submit" name="validation" value="Valider">
 			</form>
-			<input type="submit" name="validation" value="Valider">
 			</td>
 			<td rowspan="2"> Inscription
 			<br> <br>
 			<form action="/req_afficher_formulaire_inscription">
-			<a href="modele_formulaire_inscription.html"><input type="submit" name="inscription" value="S'inscrire"></a>
+				<a href="modele_formulaire_inscription.html"><input type="submit" name="inscription" value="S'inscrire"></a>
 			</form>
 			</td>
 		</tr>
