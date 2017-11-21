@@ -22,6 +22,7 @@ var req_identifier = require("./req_identifier.js");
 var req_static = require("./req_static.js");
 var req_erreur = require("./req_erreur.js");
 var req_demarrer_partie = require("./req_demarrer_partie.js");
+var req_proposer = require("./req_proposer.js");
 
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
