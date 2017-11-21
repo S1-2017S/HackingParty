@@ -60,6 +60,9 @@ var traite_requete = function (req, res) {
 			case '/req_demarrer_partie':
 				req_demarrer_partie(req, res, query);
 				break;
+			case '/req_proposer':
+				req_proposer(req, res, query);
+				break;
 			default:
 				req_static(req, res, query);
 				break;
