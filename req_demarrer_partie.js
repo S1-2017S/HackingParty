@@ -44,6 +44,5 @@ var trait = function (req, res, query){
 
 }
 
-trait("a","b","c")
 //-----------------------------------------------------------------------------
 module.exports = trait;
