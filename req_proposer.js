@@ -11,6 +11,7 @@ require('remedial');
 
 var trait = function (req, res, query){
 	
+	var page;
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
 	game_data = JSON.parse(game_data);
 	
@@ -36,4 +37,3 @@ var trait = function (req, res, query){
 
 module.exports = trait;
 
-trait ("a","a","a");
