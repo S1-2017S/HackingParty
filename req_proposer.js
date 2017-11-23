@@ -11,7 +11,8 @@ require('remedial');
 
 var trait = function (req, res, query){
 
-
+	var i;
+	var verif = 0;
 	var marqueurs;
 	var page;
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
@@ -23,41 +24,59 @@ var trait = function (req, res, query){
 	couleurs_joueur[1] = query.couleur2;
 	couleurs_joueur[2] = query.couleur3;
 	couleurs_joueur[3] = query.couleur4;
-	/*
-	   var i;
-	   for (i=0; i<4; i++){
-	   console.log(couleurs_joueur[i]);
-	   }
-	 */
+	console.log(couleurs_joueur);
+	console.log(game_data.secret)
+
+		// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
+		if(game_data.essai === 11){
+
+			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 
 
-	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
-	if(game_data.essai === 11){
+			marqueurs = {};
+			marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison."
+			marqueurs.win = "";
+			page = page.supplant(marqueurs);
+			res.writeHead(200, {'Content-Type': 'text/html'});
+			res.write(page);
+			res.end();
 
-		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
+		}else {
+
+			// INCREMENTAION DU NBR D'ESSAIES
+			game_data.essai++;
 
 
-		marqueurs = {};
-		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison."
-		marqueurs.win = "";
-		page = page.supplant(marqueurs);
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(page);
-		res.end();
+			for (i=0; i<4; i++){
+				console.log(game_data.secret[i]);
+				console.log(couleurs_joueur[i]);
+				if (game_data.secret[i] === couleurs_joueur[i]){
+					verif++;
+				}
+			}
 
-	}else {
+			game_data = JSON.stringify(game_data);
+			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
-		// INCREMENTAION DU NBR D'ESSAIES
-		game_data.essai++;
-		game_data = JSON.stringify(game_data);
-		fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
-		page = fs.readFileSync('modele_jeu.html', 'utf-8');
-		res.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(page);
-		res.end();
+			// SI VICTOIRE AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE VICTOIRE
+			if (verif === 4){
+				page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
+				marqueurs = {};
+				marqueurs.lose = "";
+				marqueurs.win = "Vous avez réussi à trouver la combinaison";
+				page= page.supplant(marqueurs);
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.write(page);
+				res.end()
+			}
 
-	}
+			page = fs.readFileSync('modele_jeu.html', 'utf-8');
+			res.writeHead(200, {'Content-Type': 'text/html'});
+			res.write(page);
+			res.end();
+
+		}
 
 
 }
