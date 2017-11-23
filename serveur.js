@@ -23,6 +23,7 @@ var req_static = require("./req_static.js");
 var req_erreur = require("./req_erreur.js");
 var req_demarrer_partie = require("./req_demarrer_partie.js");
 var req_proposer = require("./req_proposer.js");
+var req_retour_page_accueil_membre = require("./req_retour_page_accueil_membre.js");
 
 //-------------------------------------------------------------------------
 // FONCTION DE CALLBACK APPELLEE POUR CHAQUE REQUETE
@@ -32,7 +33,7 @@ var traite_requete = function (req, res) {
 
 	var ressource;
 	var requete;
-	var pathname;;
+	var pathname;
 	var query;
 
 	console.log("URL reçue : " + req.url);
@@ -62,6 +63,9 @@ var traite_requete = function (req, res) {
 				break;
 			case '/req_proposer':
 				req_proposer(req, res, query);
+				break;
+			case '/req_retour_page_accueil_membre':
+				req_retour_page_accueil_membre(req, res, query);
 				break;
 			default:
 				req_static(req, res, query);
