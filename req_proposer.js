@@ -10,34 +10,57 @@ var fs = require("fs");
 require('remedial');
 
 var trait = function (req, res, query){
-	
+
+
+	var marqueurs;
 	var page;
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
 	game_data = JSON.parse(game_data);
-	
+
 	var couleurs_joueur = [];
 
 	couleurs_joueur[0] = query.couleur1;
 	couleurs_joueur[1] = query.couleur2;
 	couleurs_joueur[2] = query.couleur3;
 	couleurs_joueur[3] = query.couleur4;
-/*
-	var i;
-	for (i=0; i<4; i++){
-		console.log(couleurs_joueur[i]);
+	/*
+	   var i;
+	   for (i=0; i<4; i++){
+	   console.log(couleurs_joueur[i]);
+	   }
+	 */
+
+
+	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
+	if(game_data.essai === 11){
+
+		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
+
+
+		marqueurs = {};
+		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison."
+		marqueurs.win = "";
+		page = page.supplant(marqueurs);
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
+		res.end();
+
+	}else {
+
+		// INCREMENTAION DU NBR D'ESSAIES
+		game_data.essai++;
+		game_data = JSON.stringify(game_data);
+		fs.writeFileSync("./jeu.json", game_data, "UTF-8");
+
+		page = fs.readFileSync('modele_jeu.html', 'utf-8');
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(page);
+		res.end();
+
 	}
-*/
 
-	l
-	page = fs.readFileSync('modele_jeu.html', 'utf-8');
-
-
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(page);
-	res.end();
 
 }
 //---------------------------------------------------------------------
-
 module.exports = trait;
 
