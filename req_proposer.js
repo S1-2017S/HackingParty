@@ -35,7 +35,7 @@ var trait = function (req, res, query){
 
 			marqueurs = {};
 			marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison."
-				marqueurs.win = "";
+			marqueurs.win = "";
 			page = page.supplant(marqueurs);
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.write(page);
