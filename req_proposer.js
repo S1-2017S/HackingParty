@@ -13,7 +13,7 @@ var trait = function (req, res, query){
 
 	var i;
 	var verif = 0;
-	var marqueurs;
+	var marqueurs = {};
 	var page;
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
 	game_data = JSON.parse(game_data);
@@ -33,7 +33,6 @@ var trait = function (req, res, query){
 		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 
 
-		marqueurs = {};
 		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison.";
 		marqueurs.win = "";
 		page = page.supplant(marqueurs);
@@ -55,14 +54,14 @@ var trait = function (req, res, query){
 			}
 		}
 
-		game_data = JSON.stringify(game_data);
-		fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
 
 		// SI VICTOIRE AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE VICTOIRE
 		if (verif === 4){
+			game_data = JSON.stringify(game_data);
+			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
+
 			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
-			marqueurs = {};
 			marqueurs.lose = "";
 			marqueurs.win = "Vous avez réussi à trouver la combinaison";
 			page = page.supplant(marqueurs);
@@ -72,7 +71,25 @@ var trait = function (req, res, query){
 			res.end();
 
 		}else{
+
+
+			// AFFICHAGE DES CHOIX 
+
+			var j;
+
+			for (j=0; j<11; j++){
+				console.log(game_data.essai);
+				marqueurs.marqueur11 = couleurs_joueur[0];
+				marqueurs.marqueur21 = couleurs_joueur[1];
+				marqueurs.marqueur31 = couleurs_joueur[2];
+				marqueurs.marqueur41 = couleurs_joueur[3];
+			}
+
+			game_data = JSON.stringify(game_data);
+			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
+
 			page = fs.readFileSync('modele_jeu.html', 'utf-8');
+			page = page.supplant(marqueurs);
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.write(page);
 			res.end();
