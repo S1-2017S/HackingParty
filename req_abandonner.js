@@ -10,11 +10,16 @@ require('remedial');
 
 var trait = function (req, res, query) {
 	
+	var marqueurs = {};
 	var page;
 	
 	// ABANDON DE LA PARTIE
 
 	page = fs.readFileSync('modele_fin_de_partie.html', 'Utf-8')
+	
+	marqueurs = {};
+	marqueurs.abandon = "Dommage :( vous fairez mieux la prochaine fois !"
+	page = page.supplant(marqueurs);
 
 	res.writeHead(200, {'Content-Type' : 'text/html'});
 	res.write(page);
