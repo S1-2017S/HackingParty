@@ -11,12 +11,14 @@ require('remedial');
 var trait = function (req, res, query) {
 
 	var page;
-	var marqueur;
+	var marqueurs = {};
 
 	// RETOUR SUR LA PAGE ACCUEIL MEMBRES
 
 	page = fs.readFileSync('modele_accueil_membre.html', 'utf-8');
-
+	
+	marqueurs.pseudo = query.pseudo;
+	page = page.supplant(marqueurs);
 	res.writeHead(200, {'Content-Type' : 'text/html'});
 	res.write(page);
 	res.end();

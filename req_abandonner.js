@@ -18,6 +18,7 @@ var trait = function (req, res, query) {
 	page = fs.readFileSync('modele_fin_de_partie.html', 'Utf-8')
 	
 	marqueurs = {};
+	marqueurs.pseudo = query.pseudo;
 	marqueurs.win = "";
 	marqueurs.lose = "";
 	marqueurs.abandon = "Dommage :( vous fairez mieux la prochaine fois !"

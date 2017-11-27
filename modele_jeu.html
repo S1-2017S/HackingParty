@@ -252,11 +252,14 @@
 						</td>
 						<td>
 						<input type="submit" name="valider" value="Valider">
+						<input type="hidden" name="pseudo" value="{pseudo}">
 					</form>
 				</td>
 			</tr>
 		</table>
 		<form action="/req_abandonner" method="GET">
 			<button name="abandon" value="abandonner"> Abandonner la partie</button>
+			<input type="hidden" name="pseudo" value="{pseudo}">
+		</form>
 	</body>
 </html>
