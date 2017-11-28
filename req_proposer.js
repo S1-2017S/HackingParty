@@ -18,9 +18,7 @@ var trait = function (req, res, query){
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
 	game_data = JSON.parse(game_data);
 	var tableau = game_data.tableau;
-	console.log(tableau);
-	console.log(tableau[0]);
-	var ligne;
+	var ligne= tableau[game_data.essai];
 	var couleurs_joueur = [];
 
 	couleurs_joueur[0] = query.couleur1;
@@ -43,10 +41,7 @@ var trait = function (req, res, query){
 
 
 
-	}else {
-
-		// INCREMENTAION DU NBR D'ESSAIES
-		game_data.essai++;
+	}else{
 
 
 		for (i=0; i<4; i++){
@@ -81,17 +76,17 @@ var trait = function (req, res, query){
 
 
 			if (game_data.essai === 0) {
-				ligne = tableau[0];
+				console.log(tableau[0]);
 				console.log(ligne);
 
-				ligne.marqueur11 = couleurjoueur[0];
-				ligne.marqueur21 = couleurjoueur[1];
-				ligne.marqueur31 = couleurjoueur[2];
-				ligne.marqueur41 = couleurjoueur[3];
+				ligne.marqueur11 = couleurs_joueur[0];
+				ligne.marqueur21 = couleurs_joueur[1];
+				ligne.marqueur31 = couleurs_joueur[2];
+				ligne.marqueur41 = couleurs_joueur[3];
 			}
 
 			// INCREMENTAION DU NBR D'ESSAIES
-			
+			console.log(game_data.essai);			
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
 
