@@ -172,6 +172,7 @@ var trait = function (req, res, query){
 	tableau[10] = ligne11;
 	tableau[11] = ligne12;
 
+	game_data.tableau = tableau;
 
 	// CREATION DU CODE SECRET
 
