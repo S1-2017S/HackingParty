@@ -20,7 +20,7 @@ var trait = function (req, res, query){
 	var tableau = game_data.tableau;
 	console.log(tableau);
 	console.log(tableau[0]);
-
+	var ligne;
 	var couleurs_joueur = [];
 
 	couleurs_joueur[0] = query.couleur1;
@@ -79,25 +79,27 @@ var trait = function (req, res, query){
 
 			// AFFICHAGE DES CHOIX 
 
-			var j = 0;
 
-			marqueurs.marqueur11 = couleurs_joueur[0];
-			marqueurs.marqueur21 = couleurs_joueur[1];
-			marqueurs.marqueur31 = couleurs_joueur[2];
-			marqueurs.marqueur41 = couleurs_joueur[3];
-			var table = []
-				table [j] = marqueurs;
-			console.log(marqueurs);
+			if (game_data.essai === 0) {
+				ligne = tableau[0];
+				console.log(ligne);
+
+				ligne.marqueur11 = couleurjoueur[0];
+				ligne.marqueur21 = couleurjoueur[1];
+				ligne.marqueur31 = couleurjoueur[2];
+				ligne.marqueur41 = couleurjoueur[3];
+			}
 
 			// INCREMENTAION DU NBR D'ESSAIES
+			
+			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
-
 
 			game_data = JSON.stringify(game_data);
 			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
 			page = fs.readFileSync('modele_jeu.html', 'utf-8');
-			page = page.supplant(table[j]);
+			page = page.supplant(ligne);
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.write(page);
 			res.end();
