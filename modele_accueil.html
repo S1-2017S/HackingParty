@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-
+	<link rel="stylesheet"
+	type="text/css"
+	href="modele_accueil.css"/>
 	<head>
 			<meta charset="UTF-8" />
 			<title>HACKING PARTY</title>
 	</head>
 
 	<h1> HACKING PARTY </h1>
-
+	<br><br><br><br>
 	<table border="1">
 		<tr>
-			<td rowspan="1"> Connexion 
+			<th>Connexion</th>
+			<th>Inscription</th>
+		</tr>
+		<tr>
+			<td> 
 			<form action="/req_identifier" method="GET">
 				{erreur} <br>	
 				Identifiant : <input type="text" name="pseudo" value=""><p>
@@ -19,8 +25,7 @@
 				<input type="submit" name="validation" value="Valider">
 			</form>
 			</td>
-			<td rowspan="2"> Inscription
-			<br> <br>
+			<td>
 			<form action="/req_afficher_formulaire_inscription">
 				<input type="submit" name="inscription" value="S'inscrire"></a>
 			</form>
