@@ -12,7 +12,7 @@
 		<h1> HACKING PARTY </h1>
 	
 	<div class="tableaux">
-		<table border="1">
+		<table>
 				<tr>
 					<td> {marqueur11} </td>
 				</tr>
@@ -52,7 +52,7 @@
 			</table>
 		</div>
 		<div class="tableaux">
-			<table border="1">
+			<table>
 				<tr>
 					<td> {marqueur21} </td>
 				</tr>
@@ -92,7 +92,7 @@
 			</table>
 		</div>
 		<div class="tableaux">
-			<table border="1">
+			<table>
 				<tr>
 					<td> {marqueur31} </td>
 				</tr>
@@ -132,7 +132,7 @@
 			</table>
 		</div>
 		<div class="tableaux">
-			<table border="1">
+			<table>
 				<tr>
 					<td> {marqueur41} </td>
 				</tr>
@@ -172,7 +172,7 @@
 			</table>
 		</div>
 		<div class="tableaux">
-			<table border="1">
+			<table>
 				<tr>
 					<td> {marqueur51} </td>
 					<td> {marqueur61} </td>
@@ -247,11 +247,14 @@
 				</tr>
 			</table>
 		</div>
-		<table border="1">
+		<table>
 			<tr>
-				<td rowspan="1">
+				<th>Couleurs : </th>
+			</tr>
+			<tr>
+				<td class="couleurs">
 					<form action="/req_proposer" method="GET">
-			Couleurs : <select name="couleur1">
+					<select name="couleur1">
 						<option value="bleu">Bleu</option>
 						<option value="rouge">Rouge</option>
 						<option value="jaune">Jaune</option>
@@ -259,7 +262,7 @@
 						<option value="violet">Violet</option>
 						<option value="orange">Orange</option>
 						</td>
-						<td>
+						<td name="couleurs">
 						<select name="couleur2">
 						<option value="bleu">Bleu</option>
 						<option value="rouge">Rouge</option>
@@ -268,7 +271,7 @@
 						<option value="violet">Violet</option>
 						<option value="orange">Orange</option>
 						</td>
-						<td>
+						<td class="couleurs">
 						<select name="couleur3">
 						<option value="bleu">Bleu</option>
 						<option value="rouge">Rouge</option>
@@ -277,7 +280,7 @@
 						<option value="violet">Violet</option>
 						<option value="orange">Orange</option>
 						</td>
-						<td>
+						<td class="couleurs">
 						<select name="couleur4">
 						<option value="bleu">Bleu</option>
 						<option value="rouge">Rouge</option>
@@ -286,7 +289,7 @@
 						<option value="violet">Violet</option>
 						<option value="orange">Orange</option>
 						</td>
-						<td>
+						<td class="couleurs">
 						<input type="submit" name="valider" value="Valider">
 						<input type="hidden" name="pseudo" value="{pseudo}">
 					</form>
