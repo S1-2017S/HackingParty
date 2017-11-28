@@ -83,6 +83,72 @@ var trait = function (req, res, query){
 				ligne.marqueur21 = couleurs_joueur[1];
 				ligne.marqueur31 = couleurs_joueur[2];
 				ligne.marqueur41 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 1) {
+				ligne.marqueur12 = couleurs_joueur[0];
+				ligne.marqueur22 = couleurs_joueur[1]:
+				ligne.marqueur32 = couleurs_joueur[2];
+				ligne.marqueur42 = couleurs_joueur[3];
+			
+			} else if (game_data.essai === 2) {
+				ligne.marqueur13 = couleurs_joueur[0];
+				ligne.marqueur23 = couleurs_joueur[1];
+				ligne.marqueur33 = couleurs_joueur[2];
+				ligne.marqueur43 = couleurs_joueur[3];
+		
+			} else if (game_data.essai === 3) {
+				ligne.marqueur13 = couleurs_joueur[0];
+				ligne.marqueur23 = couleurs_joueur[1];
+				ligne.marqueur33 = couleurs_joueur[2];
+				ligne.marqueur43 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 4) {
+				ligne.marqueur14 = couleurs_joueur[0];
+				ligne.marqueur24 = couleurs_joueur[1];
+				ligne.marqueur34 = couleurs_joueur[2];
+				ligne.marqueur44 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 5) {
+				ligne.marqueur15 = couleurs_joueur[0];
+				ligne.marqueur25 = couleurs_joueur[1];
+				ligne.marqueur35 = couleurs_joueur[2];
+				ligne.marqueur45 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 6) {
+				ligne.marqueur16 = couleurs_joueur[0];
+				ligne.marqueur26 = couleurs_joueur[1];
+				ligne.marqueur36 = couleurs_joueur[2];
+				ligne.marqueur46 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 7) {
+				ligne.marqueur17 = couleurs_joueur[0];
+				ligne.marqueur27 = couleurs_joueur[1];
+				ligne.marqueur37 = couleurs_joueur[2];
+				ligne.marqueur47 = couleurs_joueur[3];
+
+			] else if (game_data.essai === 8) {
+				ligne.marqueur18 = couleurs_joueur[0];
+				ligne.marqueur28 = couleurs_joueur[1];
+				ligne.maruqeur38 = couleurs_joueur[2];
+				ligne.marqueur48 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 9) {
+				ligne.marqueur19 = couleurs_joueur[0];
+				ligne.marqueur29 = couleurs_joueur[1];
+				ligne.marqueur39 = couleurs_joueur[2];
+				ligne.marqueur49 = couleurs_joueur[0];
+
+			} else if (game_data.essai === 10) {
+				ligne.marqueur110 = couleurs_joueur[0];
+				ligne.marqueur210 = couleurs_joueur[1];
+				ligne.marqueur310 = couleurs_joueur[2];
+				ligne.marqueur410 = couleurs_joueur[3];
+
+			} else if (game_data.essai === 11) {
+				ligne.marqueur111 = couleurs_joueur[0];
+				ligne.marqueur211 = couleurs_joueur[1];
+				ligne.marqueur311 = couleurs_joueur[2];
+				ligne.marqueur411 = couleurs_joueur[3];
 			}
 
 			// INCREMENTAION DU NBR D'ESSAIES
