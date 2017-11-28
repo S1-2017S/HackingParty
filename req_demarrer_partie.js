@@ -28,135 +28,135 @@ var trait = function (req, res, query){
 
 	var ligne1 = {};
 
-	ligne1.marqueur11 = " ";
-	ligne1.marqueur21 = " ";
-	ligne1.marqueur31 = " ";
-	ligne1.marqueur41 = " ";
-	ligne1.marqueur51 = " ";
-	ligne1.marqueur61 = " ";
-	ligne1.marqueur71 = " ";
-	ligne1.marqueur81 = " ";
+	ligne1.marqueur11 = "\n";
+	ligne1.marqueur21 = "\n";
+	ligne1.marqueur31 = "\n";
+	ligne1.marqueur41 = "\n";
+	ligne1.marqueur51 = "\n";
+	ligne1.marqueur61 = "\n";
+	ligne1.marqueur71 = "\n";
+	ligne1.marqueur81 = "\n";
 
 	var ligne2 = {};
 
-	ligne2.marqueur12 = " ";
-	ligne2.marqueur22 = " ";
-	ligne2.marqueur32 = " ";
-	ligne2.marqueur42 = " ";
-	ligne2.marqueur52 = " ";
-	ligne2.marqueur62 = " ";
-	ligne2.marqueur72 = " ";
-	ligne2.marqueur82 = " ";
+	ligne2.marqueur12 = "\n";
+	ligne2.marqueur22 = "\n";
+	ligne2.marqueur32 = "\n";
+	ligne2.marqueur42 = "\n";
+	ligne2.marqueur52 = "\n";
+	ligne2.marqueur62 = "\n";
+	ligne2.marqueur72 = "\n";
+	ligne2.marqueur82 = "\n";
 
 	var ligne3 = {};
 
-	ligne3.marqueur13 = " ";
-	ligne3.marqueur23 = " ";
-	ligne3.marqueur33 = " ";
-	ligne3.marqueur43 = " ";
-	ligne3.marqueur53 = " ";
-	ligne3.marqueur63 = " ";
-	ligne3.marqueur73 = " ";
-	ligne3.marqueur83 = " ";
+	ligne3.marqueur13 = "\n";
+	ligne3.marqueur23 = "\n";
+	ligne3.marqueur33 = "\n";
+	ligne3.marqueur43 = "\n";
+	ligne3.marqueur53 = "\n";
+	ligne3.marqueur63 = "\n";
+	ligne3.marqueur73 = "\n";
+	ligne3.marqueur83 = "\n";
 
 	var ligne4 = {};
 
-	ligne4.marqueur14 = " ";
-	ligne4.marqueur24 = " ";
-	ligne4.marqueur34 = " ";
-	ligne4.marqueur44 = " ";
-	ligne4.marqueur54 = " ";
-	ligne4.marqueur64 = " ";
-	ligne4.marqueur74 = " ";
-	ligne4.marqueur84 = " ";
+	ligne4.marqueur14 = "\n";
+	ligne4.marqueur24 = "\n";
+	ligne4.marqueur34 = "\n";
+	ligne4.marqueur44 = "\n";
+	ligne4.marqueur54 = "\n";
+	ligne4.marqueur64 = "\n";
+	ligne4.marqueur74 = "\n";
+	ligne4.marqueur84 = "\n";
 
 	var ligne5 = {};
 
-	ligne5.marqueur15 = " ";
-	ligne5.marqueur25 = " ";
-	ligne5.marqueur35 = " ";
-	ligne5.marqueur45 = " ";
-	ligne5.marqueur55 = " ";
-	ligne5.marqueur65 = " ";
-	ligne5.marqueur75 = " ";
-	ligne5.marqueur85 = " ";
+	ligne5.marqueur15 = "\n";
+	ligne5.marqueur25 = "\n";
+	ligne5.marqueur35 = "\n";
+	ligne5.marqueur45 = "\n";
+	ligne5.marqueur55 = "\n";
+	ligne5.marqueur65 = "\n";
+	ligne5.marqueur75 = "\n";
+	ligne5.marqueur85 = "\n";
 
 	var ligne6 = {};
 
-	ligne6.marqueur16 = " ";
-	ligne6.marqueur26 = " ";
-	ligne6.marqueur36 = " ";
-	ligne6.marqueur46 = " ";
-	ligne6.marqueur56 = " ";
-	ligne6.marqueur66 = " ";
-	ligne6.marqueur76 = " ";
-	ligne6.marqueur86 = " ";
+	ligne6.marqueur16 = "\n";
+	ligne6.marqueur26 = "\n";
+	ligne6.marqueur36 = "\n";
+	ligne6.marqueur46 = "\n";
+	ligne6.marqueur56 = "\n";
+	ligne6.marqueur66 = "\n";
+	ligne6.marqueur76 = "\n";
+	ligne6.marqueur86 = "\n";
 
 	var ligne7 = {};
 
-	ligne7.marqueur17 = " ";
-	ligne7.marqueur27 = " ";
-	ligne7.marqueur37 = " ";
-	ligne7.marqueur47 = " ";
-	ligne7.marqueur57 = " ";
-	ligne7.marqueur67 = " ";
-	ligne7.marqueur77 = " ";
-	ligne7.marqueur87 = " ";
+	ligne7.marqueur17 = "\n";
+	ligne7.marqueur27 = "\n";
+	ligne7.marqueur37 = "\n";
+	ligne7.marqueur47 = "\n";
+	ligne7.marqueur57 = "\n";
+	ligne7.marqueur67 = "\n";
+	ligne7.marqueur77 = "\n";
+	ligne7.marqueur87 = "\n";
 	
 	var ligne8 = {};
 
-	ligne8.marqueur18 = " ";
-	ligne8.marqueur28 = " ";
-	ligne8.marqueur38 = " ";
-	ligne8.marqueur48 = " ";
-	ligne8.marqueur58 = " ";
-	ligne8.marqueur68 = " ";
-	ligne8.marqueur78 = " ";
-	ligne8.marqueur88 = " ";
+	ligne8.marqueur18 = "\n";
+	ligne8.marqueur28 = "\n";
+	ligne8.marqueur38 = "\n";
+	ligne8.marqueur48 = "\n";
+	ligne8.marqueur58 = "\n";
+	ligne8.marqueur68 = "\n";
+	ligne8.marqueur78 = "\n";
+	ligne8.marqueur88 = "\n";
 	
 	var ligne9 = {};
 
-	ligne9.marqueur19 = " ";
-	ligne9.marqueur29 = " ";
-	ligne9.marqueur39 = " ";
-	ligne9.marqueur49 = " ";
-	ligne9.marqueur59 = " ";
-	ligne9.marqueur69 = " ";
-	ligne9.marqueur79 = " ";
-	ligne9.marqueur89 = " ";
+	ligne9.marqueur19 = "\n";
+	ligne9.marqueur29 = "\n";
+	ligne9.marqueur39 = "\n";
+	ligne9.marqueur49 = "\n";
+	ligne9.marqueur59 = "\n";
+	ligne9.marqueur69 = "\n";
+	ligne9.marqueur79 = "\n";
+	ligne9.marqueur89 = "\n";
 
 	var ligne10 = {};
 
-	ligne10.marqueur110 = " ";
-	ligne10.marqueur210 = " ";
-	ligne10.marqueur310 = " ";
-	ligne10.marqueur410 = " ";
-	ligne10.marqueur510 = " ";
-	ligne10.marqueur610 = " ";
-	ligne10.marqueur710 = " ";
-	ligne10.marqueur810 = " ";
+	ligne10.marqueur110 = "\n";
+	ligne10.marqueur210 = "\n";
+	ligne10.marqueur310 = "\n";
+	ligne10.marqueur410 = "\n";
+	ligne10.marqueur510 = "\n";
+	ligne10.marqueur610 = "\n";
+	ligne10.marqueur710 = "\n";
+	ligne10.marqueur810 = "\n";
 
 	var ligne11 = {};
 
-	ligne11.marqueur111 = " ";
-	ligne11.marqueur211 = " ";
-	ligne11.marqueur311 = " ";
-	ligne11.marqueur411 = " ";
-	ligne11.marqueur511 = " ";
-	ligne11.marqueur611 = " ";
-	ligne11.marqueur711 = " ";
-	ligne11.marqueur811 = " ";
+	ligne11.marqueur111 = "\n";
+	ligne11.marqueur211 = "\n";
+	ligne11.marqueur311 = "\n";
+	ligne11.marqueur411 = "\n";
+	ligne11.marqueur511 = "\n";
+	ligne11.marqueur611 = "\n";
+	ligne11.marqueur711 = "\n";
+	ligne11.marqueur811 = "\n";
 
 	var ligne12 = {};
 
-	ligne12.marqueur112 = " ";
-	ligne12.marqueur212 = " ";
-	ligne12.marqueur312 = " ";
-	ligne12.marqueur412 = " ";
-	ligne12.marqueur512 = " ";
-	ligne12.marqueur612 = " ";
-	ligne12.marqueur712 = " ";
-	ligne12.marqueur812 = " ";
+	ligne12.marqueur112 = "\n";
+	ligne12.marqueur212 = "\n";
+	ligne12.marqueur312 = "\n";
+	ligne12.marqueur412 = "\n";
+	ligne12.marqueur512 = "\n";
+	ligne12.marqueur612 = "\n";
+	ligne12.marqueur712 = "\n";
+	ligne12.marqueur812 = "\n";
 
 
 	tableau[0] = ligne1;
