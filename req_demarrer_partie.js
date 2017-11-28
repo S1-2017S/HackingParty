@@ -10,7 +10,6 @@ require('remedial');
 
 var trait = function (req, res, query){
 
-	var marqueurs = {};
 	var page;
 	var data;
 	var game_data = {};
@@ -18,14 +17,13 @@ var trait = function (req, res, query){
 	var secret = [];
 	var i;
 	var k;
-	
 	var tableau = [];
-	game.data.tableau;
 
+	game_data.tableau;
 	game_data.couleurs = couleurs;
 	game_data.secret = secret;
 	game_data.essai = 0;
-	
+
 	var ligne1 = {};
 
 	ligne1.marqueur11 = " ";
@@ -39,7 +37,7 @@ var trait = function (req, res, query){
 	ligne2.marqueur22 = " ";
 	ligne2.marqueur32 = " ";
 	ligne2.marqueur42 = " ";
-	
+
 	var ligne3 = {};
 
 	ligne3.marqueur13 = " ";
@@ -49,7 +47,7 @@ var trait = function (req, res, query){
 
 	var ligne4 = {};
 
-	ligne4.marqueur14 = " ":
+	ligne4.marqueur14 = " ";
 	ligne4.marqueur24 = " ";
 	ligne4.marqueur34 = " ";
 	ligne4.marqueur44 = " ";
@@ -92,7 +90,7 @@ var trait = function (req, res, query){
 	var ligne10 = {};
 
 	ligne10.marqueur110 = " ";
-	ligne10.marqueur210 = " ":
+	ligne10.marqueur210 = " ";
 	ligne10.marqueur310 = " ";
 	ligne10.marqueur410 = " ";
 
@@ -123,8 +121,9 @@ var trait = function (req, res, query){
 	tableau[10] = ligne11;
 	tableau[11] = ligne12;
 
+
 	// CREATION DU CODE SECRET
-	
+
 	for (i=0; i<4; i++){
 		k = Math.floor(Math.random()*6);
 		secret[i] = couleurs[k];
@@ -132,15 +131,13 @@ var trait = function (req, res, query){
 
 	game_data = JSON.stringify(game_data);
 	fs.writeFileSync("./jeu.json", game_data, "UTF-8");
-	
+
 
 
 	// AFFICHAGE DE LA modele_jeu
 
 	page = fs.readFileSync('modele_jeu.html', 'utf-8');
 
-	marqueurs.pseudo = query.pseudo;
-	page = page.supplant(marqueurs);
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
 	res.end();

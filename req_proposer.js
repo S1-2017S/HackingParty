@@ -17,25 +17,22 @@ var trait = function (req, res, query){
 	var page;
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
 	game_data = JSON.parse(game_data);
-
+	console.log(game_data);
 	var couleurs_joueur = [];
 
 	couleurs_joueur[0] = query.couleur1;
 	couleurs_joueur[1] = query.couleur2;
 	couleurs_joueur[2] = query.couleur3;
 	couleurs_joueur[3] = query.couleur4;
-	console.log(couleurs_joueur);
-	console.log(game_data.secret);
 
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
 	if(game_data.essai === 11){
 
 		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 
+
 		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison.";
 		marqueurs.win = "";
-		marqueurs.abandon = "";
-		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(page);
@@ -65,8 +62,6 @@ var trait = function (req, res, query){
 			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 			marqueurs.lose = "";
 			marqueurs.win = "Vous avez réussi à trouver la combinaison";
-			marqueurs.abandon = "";
-			marqueurs.pseudo = query.pseudo;
 			page = page.supplant(marqueurs);
 
 			res.writeHead(200, {'Content-Type': 'text/html'});
@@ -78,22 +73,22 @@ var trait = function (req, res, query){
 
 			// AFFICHAGE DES CHOIX 
 
-			var j;
+			var j = 0;
 
-			for (j=0; j<11; j++){
-				console.log(game_data.essai);
-				marqueurs.marqueur11 = couleurs_joueur[0];
-				marqueurs.marqueur21 = couleurs_joueur[1];
-				marqueurs.marqueur31 = couleurs_joueur[2];
-				marqueurs.marqueur41 = couleurs_joueur[3];
-			}
+			marqueurs.marqueur11 = couleurs_joueur[0];
+			marqueurs.marqueur21 = couleurs_joueur[1];
+			marqueurs.marqueur31 = couleurs_joueur[2];
+			marqueurs.marqueur41 = couleurs_joueur[3];
+			var table = []
+			table [j] = marqueurs;
+			console.log(marqueurs);
+
 
 			game_data = JSON.stringify(game_data);
 			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
-			
-			marqueurs.pseudo = query.pseudo;
+
 			page = fs.readFileSync('modele_jeu.html', 'utf-8');
-			page = page.supplant(marqueurs);
+			page = page.supplant(table[j]);
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.write(page);
 			res.end();
