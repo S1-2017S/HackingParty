@@ -59,6 +59,9 @@ var trait = function (req, res, query){
 
 		// SI VICTOIRE AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE VICTOIRE
 		if (verif === 4){
+			// INCREMENTAION DU NBR D'ESSAIES
+			game_data.essai++;
+
 			game_data = JSON.stringify(game_data);
 			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
@@ -83,8 +86,11 @@ var trait = function (req, res, query){
 			marqueurs.marqueur31 = couleurs_joueur[2];
 			marqueurs.marqueur41 = couleurs_joueur[3];
 			var table = []
-			table [j] = marqueurs;
+				table [j] = marqueurs;
 			console.log(marqueurs);
+
+			// INCREMENTAION DU NBR D'ESSAIES
+			game_data.essai++;
 
 
 			game_data = JSON.stringify(game_data);
