@@ -17,7 +17,10 @@ var trait = function (req, res, query){
 	var page;
 	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
 	game_data = JSON.parse(game_data);
-	console.log(game_data);
+	var tableau = game_data.tableau;
+	console.log(tableau);
+	console.log(tableau[0]);
+
 	var couleurs_joueur = [];
 
 	couleurs_joueur[0] = query.couleur1;
