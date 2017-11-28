@@ -24,6 +24,8 @@ var trait = function (req, res, query){
 	game_data.secret = secret;
 	game_data.essai = 0;
 
+// COMMENTAIRE MARQUEUR 
+
 	var ligne1 = {};
 
 	ligne1.marqueur11 = " ";
