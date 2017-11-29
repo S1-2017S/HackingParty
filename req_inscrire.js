@@ -1,6 +1,6 @@
 //=========================================================================
 // Traitement de "req_inscrire"
-// Auteur : P. Thiré
+// Auteur : P. Thiré / Modif Groupe HackingParty
 // Modifié par : groupe Hacking Party
 // Version : 21/11/2017
 //=========================================================================
