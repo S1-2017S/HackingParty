@@ -71,19 +71,39 @@ var trait = function (req, res, query){
 
 		}else{
 
+			/*
+			// AFFICHAGE DES INDICATIONS
+			for (i=0; i<4; i++){
+			if (couleurs_joueur[i] === game_data.secret[i]){
 
-			// AFFICHAGE DES CHOIX 
-			console.log(game_data.essai);
+			}
+			}
+
+			 */
+			// AFFICHAGE DES CHOIX DU JOUEUR
 
 			if (game_data.essai === 0) {
-			//	console.log(tableau[0]);
-			//	console.log(ligne);
+				//	console.log(tableau[0]);
+				//	console.log(ligne);
 
 				ligne.marqueur11 = couleurs_joueur[0];
 				ligne.marqueur21 = couleurs_joueur[1];
 				ligne.marqueur31 = couleurs_joueur[2];
 				ligne.marqueur41 = couleurs_joueur[3];
-				game_data.tableau[0]=ligne;
+
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur51 = "noir";	
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur61 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur71 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur81 = "noir";
+				}
+
 
 			} else if (game_data.essai === 1) {
 				ligne.marqueur12 = couleurs_joueur[0];
@@ -91,19 +111,65 @@ var trait = function (req, res, query){
 				ligne.marqueur32 = couleurs_joueur[2];
 				ligne.marqueur42 = couleurs_joueur[3];
 
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur52 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur62 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur72 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur82 = "noir";
+				}
+
+
+
+
 			} else if (game_data.essai === 2) {
 				ligne.marqueur13 = couleurs_joueur[0];
 				ligne.marqueur23 = couleurs_joueur[1];
 				ligne.marqueur33 = couleurs_joueur[2];
 				ligne.marqueur43 = couleurs_joueur[3];
 
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur53 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur63 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur73 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur83 = "noir";
+				}
+
+
+
+
 			} else if (game_data.essai === 3) {
-				console.log("Chibre");
 				ligne.marqueur14 = couleurs_joueur[0];
 				ligne.marqueur24 = couleurs_joueur[1];
 				ligne.marqueur34 = couleurs_joueur[2];
 				ligne.marqueur44 = couleurs_joueur[3];
-				console.log(ligne);
+
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur54 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur64 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur74 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur84 = "noir";
+				}
+
+
+
 
 			} else if (game_data.essai === 4) {
 				ligne.marqueur15 = couleurs_joueur[0];
@@ -111,11 +177,44 @@ var trait = function (req, res, query){
 				ligne.marqueur35 = couleurs_joueur[2];
 				ligne.marqueur45 = couleurs_joueur[3];
 
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur55 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur65 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur75 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur85 = "noir";
+				}
+
+
+
+
 			} else if (game_data.essai === 5) {
 				ligne.marqueur16 = couleurs_joueur[0];
 				ligne.marqueur26 = couleurs_joueur[1];
 				ligne.marqueur36 = couleurs_joueur[2];
 				ligne.marqueur46 = couleurs_joueur[3];
+
+
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur56 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur66 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur76 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur86 = "noir";
+				}
+
+
+
 
 			} else if (game_data.essai === 6) {
 				ligne.marqueur17 = couleurs_joueur[0];
@@ -123,16 +222,61 @@ var trait = function (req, res, query){
 				ligne.marqueur37 = couleurs_joueur[2];
 				ligne.marqueur47 = couleurs_joueur[3];
 
+
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur57 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur67 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur77 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur87 = "noir";
+				}
+
+
 			} else if (game_data.essai === 7) {
 				ligne.marqueur18 = couleurs_joueur[0];
 				ligne.marqueur28 = couleurs_joueur[1];
 				ligne.marqueur38 = couleurs_joueur[2];
 				ligne.marqueur48 = couleurs_joueur[3];
+
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur58 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur68 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur78 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur88 = "noir";
+				}
+
+
 			} else if (game_data.essai === 8) {
 				ligne.marqueur19 = couleurs_joueur[0];
 				ligne.marqueur29 = couleurs_joueur[1];
 				ligne.marqueur39 = couleurs_joueur[2];
 				ligne.marqueur49 = couleurs_joueur[3];
+
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur59 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur69 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur79 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur89 = "noir";
+				}
+
+
 
 			} else if (game_data.essai === 9) {
 				ligne.marqueur110 = couleurs_joueur[0];
@@ -140,16 +284,46 @@ var trait = function (req, res, query){
 				ligne.marqueur310 = couleurs_joueur[2];
 				ligne.marqueur410= couleurs_joueur[0];
 
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur510 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur610 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur710 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur810 = "noir";
+				}
+
+
+
 			} else if (game_data.essai === 10) {
 				ligne.marqueur111 = couleurs_joueur[0];
 				ligne.marqueur211 = couleurs_joueur[1];
 				ligne.marqueur311 = couleurs_joueur[2];
 				ligne.marqueur411 = couleurs_joueur[3];
 
+				if (couleurs_joueur[0]===game_data.secret[0]){
+					ligne.marqueur511 = "noir";
+				}
+				if (couleurs_joueur[1]===game_data.secret[1]){
+					ligne.marqueur611 = "noir";
+				}
+				if (couleurs_joueur[2]===game_data.secret[2]){
+					ligne.marqueur711 = "noir";
+				}
+				if (couleurs_joueur[3]===game_data.secret[3]){
+					ligne.marqueur811 = "noir";
+				}
+
+
+
 			}
 
 			// INCREMENTAION DU NBR D'ESSAIES
-//			console.log(game_data.essai);
+			//			console.log(game_data.essai);
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
 

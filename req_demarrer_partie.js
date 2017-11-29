@@ -14,11 +14,13 @@ var trait = function (req, res, query){
 	var data;
 	var game_data = {};
 	var couleurs = ["bleu","rouge","jaune", "vert","violet","orange"];
+	var couleurs_ordi = ["blanc", "noir"];
 	var secret = [];
 	var i;
 	var k;
 	var tableau = [];
 
+	game_data.couleurs_ordi = couleurs_ordi;
 	game_data.tableau;
 	game_data.couleurs = couleurs;
 	game_data.secret = secret;
