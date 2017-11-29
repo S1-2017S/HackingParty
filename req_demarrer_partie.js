@@ -9,7 +9,8 @@ var fs = require("fs");
 require('remedial');
 
 var trait = function (req, res, query){
-
+	
+	var marqueurs;
 	var page;
 	var data;
 	var game_data = {};
@@ -191,6 +192,10 @@ var trait = function (req, res, query){
 	// AFFICHAGE DE LA modele_jeu
 
 	page = fs.readFileSync('modele_jeu.html', 'utf-8');
+
+	marqueurs = {}
+	marqueurs.pseudo = query.pseudo;
+	page = page.supplant(marqueurs);
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
