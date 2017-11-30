@@ -63,6 +63,7 @@ var trait = function (req, res, query){
 			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 			marqueurs.lose = "";
 			marqueurs.win = "Vous avez réussi à trouver la combinaison";
+			marqueurs.abandon = "";
 			page = page.supplant(marqueurs);
 
 			res.writeHead(200, {'Content-Type': 'text/html'});
