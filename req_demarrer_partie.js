@@ -184,18 +184,21 @@ var trait = function (req, res, query){
 		secret[i] = couleurs[k];
 	}
 
-	game_data = JSON.stringify(game_data);
-	fs.writeFileSync("./jeu.json", game_data, "UTF-8");
-
-
-
 	// AFFICHAGE DE LA modele_jeu
 
 	page = fs.readFileSync('modele_jeu.html', 'utf-8');
 
+	for (i=0; i<12; i++){
+		console.log(game_data.tableau[i]);
+		page = page.supplant(game_data.tableau[i]);
+	}
+
 	marqueurs = {}
 	marqueurs.pseudo = query.pseudo;
 	page = page.supplant(marqueurs);
+
+	game_data = JSON.stringify(game_data);
+	fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);
