@@ -25,6 +25,39 @@ var trait = function (req, res, query){
 	couleurs_joueur[1] = query.couleur2;
 	couleurs_joueur[2] = query.couleur3;
 	couleurs_joueur[3] = query.couleur4;
+	
+
+	var choix_pion_ordi = function (couleur, secret){
+		var i;
+		var j;
+		var col = [1,1,1,1];
+		var test;
+		
+		for (i=0; i<4; i++){
+			if (couleur[i] === secret[i]){
+				col[i] = 2;
+			}
+		}
+
+		for (i=0; i<4 i++){
+			test = 0;
+			for (j=0; j<4; j++){
+				if (couleur[i] !== secret[j]){
+					test++;
+				}
+			}
+			if (test === 4){
+				col[i]=0;
+			}
+		}
+		/*
+		for (i=0; i<4; i++){
+			if (col[i] === 3){
+				col[i]=1;
+			}
+		}*/
+		return col;
+	}
 
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
 	if(game_data.essai === 11){
@@ -70,39 +103,15 @@ var trait = function (req, res, query){
 			res.end();
 
 		}else{
-
-			/*
-			// AFFICHAGE DES INDICATIONS
-			for (i=0; i<4; i++){
-			if (couleurs_joueur[i] === game_data.secret[i]){
-
-			}
-			}
-
-			 */
+			col = choix_pion_ordi (couleurs_joueur, game_data.secret);
 			// AFFICHAGE DES CHOIX DU JOUEUR
 
 			if (game_data.essai === 0) {
-				//	console.log(tableau[0]);
-				//	console.log(ligne);
-
+				
 				ligne.marqueur11 = couleurs_joueur[0];
 				ligne.marqueur21 = couleurs_joueur[1];
 				ligne.marqueur31 = couleurs_joueur[2];
 				ligne.marqueur41 = couleurs_joueur[3];
-
-				if (couleurs_joueur[0]===game_data.secret[0]){
-					ligne.marqueur51 = "noir";	
-				}
-				if (couleurs_joueur[1]===game_data.secret[1]){
-					ligne.marqueur61 = "noir";
-				}
-				if (couleurs_joueur[2]===game_data.secret[2]){
-					ligne.marqueur71 = "noir";
-				}
-				if (couleurs_joueur[3]===game_data.secret[3]){
-					ligne.marqueur81 = "noir";
-				}
 
 
 			} else if (game_data.essai === 1) {
@@ -323,16 +332,12 @@ var trait = function (req, res, query){
 			}
 
 			// INCREMENTAION DU NBR D'ESSAIES
-			//			console.log(game_data.essai);
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
 
-			//game_data = JSON.stringify(game_data);
-			//fs.writeFileSync("./jeu.json", game_data, "UTF-8");
 
 			page = fs.readFileSync('modele_jeu.html', 'utf-8');
 			for (i=0; i<12; i++){
-				console.log(game_data.tableau[i]);
 				page = page.supplant(game_data.tableau[i]);
 			}
 			game_data = JSON.stringify(game_data);
