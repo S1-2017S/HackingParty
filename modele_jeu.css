@@ -11,5 +11,6 @@ td {
 	width : 120px;
 }
 table {
-	border: 1px solid black;
-	}
+	border : 1px solid black;
+	border-collapse: collapse;
+}

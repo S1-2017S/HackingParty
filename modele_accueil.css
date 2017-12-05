@@ -13,3 +13,13 @@ h1 {
 table {
 	margin : auto;
 	}
+
+body {
+	background-image: url("wallpapersite.jpg");
+	}
+
+.menu {
+	background-color : rgb(58,58,58);
+	width : 60%;
+	margin : auto;
+}
