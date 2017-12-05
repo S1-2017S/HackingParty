@@ -15,7 +15,7 @@ var trait = function (req, res, query){
 	var data;
 	var game_data = {};
 	var couleurs = ["bleu","rouge","jaune", "vert","violet","orange"];
-	var couleurs_ordi = ["blanc", "noir"];
+	var couleurs_ordi = ["rien","blanc", "noir"];
 	var secret = [];
 	var i;
 	var k;
