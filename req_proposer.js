@@ -44,17 +44,10 @@ var trait = function (req, res, query){
 			test = 0;
 
 			for (j=0; j<4; j++){
-				/*if (couleur[i] !== secret[j]){
-					test++;
-				}*/
 				if (couleur[i] === secret[j] && col[j] !== 2 && col[i] !== 2){
 					col[i] = 1;
 				}
 			}
-			/*
-			if (test === 4){
-				col[i]=0;
-			}*/
 		}
 
 		return col;
