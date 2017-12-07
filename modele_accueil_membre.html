@@ -7,15 +7,26 @@
 <a href="/req_commencer">se déconnecter</a>
 
 
-<h2>Bienvenue !</h2>
+<h1>Bienvenue !</h1>
 
-<p/>
-Bonjour <em>{pseudo}<em>
+<p>
+Bonjour {pseudo}
 </p>
 
 <form action="/req_demarrer_partie" method="GET">
 	<button name="jouer" value"jouer">JOUER</button>
 	<input type="hidden" name="pseudo" value="{pseudo}"> 
 </form>
+
+<h2>Regles :</h2>
+
+<p> <br>
+L'ordinateur situé à l'extrémité du plateau, génère aléatoirement une combianaison de 4 couleurs. La combinaison générée est inconnue du joueur, et son but est de la retrouver. Il a 12 tentatives pour trouver la bonne combinaison. Pour cela il doit séléctionner une couleur par colonne parmit les 6 proposés. <br> <br>
+
+Pour savoir si sa combinaison est correcte, le jeu lui indiquera sur quatre emplacements à droite des propositions par un ou des pions noir si les bonnes couleurs sont situées aux bons emplacements. S'il possède des pions de la bonne couleur mais pas au bon emplacement, le jeu affichera un ou des pions blanc. Si sa combinaison propose des pions qui ne pas de la bonne couleur à la bonne place, le jeu n'affichera pas de pions. <br> <br>
+
+Si la combinaison est correcte : <br>
+La partie se finit le joueur retourne sur cette page et peut débuter une nouvelle partie s'il le souhaite.
+</p>
 
 </html>
