@@ -88,7 +88,8 @@ var trait = function (req, res, query){
 
 			game_data = JSON.stringify(game_data);
 			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
-
+			
+			marqueurs.pseudo = query.pseudo;
 			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 			marqueurs.lose = "";
 			marqueurs.win = "Vous avez réussi à trouver la combinaison";
