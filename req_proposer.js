@@ -60,7 +60,9 @@ var trait = function (req, res, query){
 
 
 		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison.";
+		marqueurs.abandon = "";
 		marqueurs.win = "";
+		marqueurs.pseudo = query.pseudo;
 		page = page.supplant(marqueurs);
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(page);
