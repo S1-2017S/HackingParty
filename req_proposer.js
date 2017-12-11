@@ -15,7 +15,7 @@ var trait = function (req, res, query){
 	var verif = 0;
 	var marqueurs = {};
 	var page;
-	var game_data = fs.readFileSync("./jeu.json", "UTF-8");
+	var game_data = fs.readFileSync(query.pseudo +".json", "UTF-8");
 	game_data = JSON.parse(game_data);
 	var tableau = game_data.tableau;
 	var ligne= tableau[game_data.essai];
@@ -87,8 +87,8 @@ var trait = function (req, res, query){
 			game_data.essai++;
 
 			game_data = JSON.stringify(game_data);
-			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
-			
+			fs.writeFileSync(query.pseudo +".json", game_data, "UTF-8");
+
 			marqueurs.pseudo = query.pseudo;
 			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 			marqueurs.lose = "";
@@ -471,13 +471,15 @@ var trait = function (req, res, query){
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
 
-
 			page = fs.readFileSync('modele_jeu.html', 'utf-8');
+			marqueurs.pseudo = query.pseudo;
+			page = page.supplant(marqueurs);
+
 			for (i=0; i<12; i++){
 				page = page.supplant(game_data.tableau[i]);
 			}
 			game_data = JSON.stringify(game_data);
-			fs.writeFileSync("./jeu.json", game_data, "UTF-8");
+			fs.writeFileSync(query.pseudo  +".json", game_data, "UTF-8");
 
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.write(page);
