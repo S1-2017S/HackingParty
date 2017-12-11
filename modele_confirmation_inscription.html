@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
+	<link rel="stylesheet"
+		type="text/css"
+		href="modele_confirmation_inscription.css"/>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>HACKING PARTY - CONFIRMATION INSCRIPTION</title>
 	</head>
 
 	<body>
-		<table border="1">
-		<tr>
-			<td rowspan="1">
+	<div id="menu">
 			Félicitations vous avez été assez intelligent pour vous inscrire <br> <br>
 			Votre pseudo est : {pseudo} et votre mot de passe est : {password}
 			<br> <br> <br>
+			<div id="bouton">
 			<form action="/req_commencer">
 				<input type="submit" name="retour_accueil" value="Retour accueil"></a>
 			</form>
-			</td>
-		</tr>
+			</div>
+	</div>	
 	</body>
 </html>

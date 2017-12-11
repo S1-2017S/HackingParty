@@ -12,34 +12,10 @@ body, html {
 	height : 100%;
 	border : 4px double silver;
 	border-radius : 10px;
-	text-align : center;
+	font-size : 20px;
 	}
 
 #bouton {
-	text-align : left;
-	}
-
-.tableaux{
-	display:inline-block;
-	vertical-align:top;
-}
-td {
-	height : 45px;
-	width : 45px;
-	}
-.couleurs{
-	width : 10%;
-}
-
-.valider {
 	text-align : right;
 	}
 
-#couleur {
-	width : 81.5%;
-	margin : auto;
-	}
-table {
-	border : 1px solid silver;
-	border-collapse: collapse;
-}

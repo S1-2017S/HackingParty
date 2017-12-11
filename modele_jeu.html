@@ -9,6 +9,7 @@
 	</head>
 
 	<body>
+	<div id="menu">
 		<h1> HACKING PARTY </h1>
 	
 	<div class="tableaux">
@@ -247,7 +248,7 @@
 				</tr>
 			</table>
 		</div>
-		<table>
+		<table id="couleur">
 			<tr>
 				<th>Couleurs : </th>
 			</tr>
@@ -262,7 +263,7 @@
 						<option value="violet">Violet</option>
 						<option value="orange">Orange</option>
 						</td>
-						<td name="couleurs">
+						<td class="couleurs">
 						<select name="couleur2">
 						<option value="bleu">Bleu</option>
 						<option value="rouge">Rouge</option>
@@ -289,16 +290,19 @@
 						<option value="violet">Violet</option>
 						<option value="orange">Orange</option>
 						</td>
-						<td class="couleurs">
+						<td class="valider">
 						<input type="submit" name="valider" value="Valider">
 						<input type="hidden" name="pseudo" value="{pseudo}">
 					</form>
 				</td>
 			</tr>
 		</table>
+		<div id="bouton">
 		<form action="/req_abandonner" method="GET">
 			<button name="abandon" value="abandonner"> Abandonner la partie</button>
 			<input type="hidden" name="pseudo" value="{pseudo}">
 		</form>
+		</div>
+	</div>	
 	</body>
 </html>
