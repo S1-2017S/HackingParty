@@ -1,7 +1,7 @@
 body, html {
 	background-image : url("wallpapersite.jpg");
 	background-attachment : fixed;
-	height : 98%;
+	height : 100%;
 	}
 
 #menu {
@@ -16,7 +16,13 @@ body, html {
 	}
 
 #bouton {
-	text-align : left;
+	width : 175px;
+	font-size : 20px;
+	float : left;
+	position : absolute;
+	background-color : rgb(10,10,10);
+	border : 4px double silver;
+	border-radius : 10px;
 	}
 
 .tableaux{
@@ -25,7 +31,7 @@ body, html {
 }
 td {
 	height : 45px;
-	width : 45px;
+	width : 150px;
 	}
 .couleurs{
 	width : 10%;

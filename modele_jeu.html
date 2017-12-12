@@ -7,13 +7,19 @@
 		<meta charset="UTF-8">
 		<title>HACKING PARTY - JEU</title>
 	</head>
-
+	
+	<div id="bouton">
+		<form action="/req_abandonner" method="GET">
+			<button name="abandon" value="abandonner"> Abandonner la partie</button>
+		<input type="hidden" name="pseudo" value="{pseudo}">
+		</form>
+	</div>
 	<body>
 	<div id="menu">
-		<h1> HACKING PARTY </h1>
-	
-	<div class="tableaux">
-		<table>
+	<h1> HACKING PARTY </h1>
+
+<div class="tableaux">
+	<table>
 				<tr>
 					<td> {marqueur11} </td>
 				</tr>
@@ -297,12 +303,6 @@
 				</td>
 			</tr>
 		</table>
-		<div id="bouton">
-		<form action="/req_abandonner" method="GET">
-			<button name="abandon" value="abandonner"> Abandonner la partie</button>
-			<input type="hidden" name="pseudo" value="{pseudo}">
-		</form>
-		</div>
 	</div>	
 	</body>
 </html>
