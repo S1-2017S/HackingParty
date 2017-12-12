@@ -1,0 +1,17 @@
+body, html {
+	background-image : url("wallpapersite.jpg");
+	background-attachment : fixed;
+	height : 98%;
+	background-repeat : no-repeat;
+	background-size : 100%;
+	}
+
+#menu {
+	background-color : rgb(10,10,10);
+	width : 70%;
+	margin : auto;
+	color : white;
+	height : 100%;
+	border : 4px double silver;
+	border-radius : 10px;
+	}
