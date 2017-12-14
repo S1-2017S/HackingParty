@@ -117,50 +117,6 @@ var trait = function (req, res, query){
 	ligne8.marqueur78 = "\n";
 	ligne8.marqueur88 = "\n";
 	
-	var ligne9 = {};
-
-	ligne9.marqueur19 = "\n";
-	ligne9.marqueur29 = "\n";
-	ligne9.marqueur39 = "\n";
-	ligne9.marqueur49 = "\n";
-	ligne9.marqueur59 = "\n";
-	ligne9.marqueur69 = "\n";
-	ligne9.marqueur79 = "\n";
-	ligne9.marqueur89 = "\n";
-
-	var ligne10 = {};
-
-	ligne10.marqueur110 = "\n";
-	ligne10.marqueur210 = "\n";
-	ligne10.marqueur310 = "\n";
-	ligne10.marqueur410 = "\n";
-	ligne10.marqueur510 = "\n";
-	ligne10.marqueur610 = "\n";
-	ligne10.marqueur710 = "\n";
-	ligne10.marqueur810 = "\n";
-
-	var ligne11 = {};
-
-	ligne11.marqueur111 = "\n";
-	ligne11.marqueur211 = "\n";
-	ligne11.marqueur311 = "\n";
-	ligne11.marqueur411 = "\n";
-	ligne11.marqueur511 = "\n";
-	ligne11.marqueur611 = "\n";
-	ligne11.marqueur711 = "\n";
-	ligne11.marqueur811 = "\n";
-
-	var ligne12 = {};
-
-	ligne12.marqueur112 = "\n";
-	ligne12.marqueur212 = "\n";
-	ligne12.marqueur312 = "\n";
-	ligne12.marqueur412 = "\n";
-	ligne12.marqueur512 = "\n";
-	ligne12.marqueur612 = "\n";
-	ligne12.marqueur712 = "\n";
-	ligne12.marqueur812 = "\n";
-
 
 	tableau[0] = ligne1;
 	tableau[1] = ligne2;
@@ -170,10 +126,6 @@ var trait = function (req, res, query){
 	tableau[5] = ligne6;
 	tableau[6] = ligne7;
 	tableau[7] = ligne8;
-	tableau[8] = ligne9;
-	tableau[9] = ligne10;
-	tableau[10] = ligne11;
-	tableau[11] = ligne12;
 
 	game_data.tableau = tableau;
 
@@ -188,7 +140,7 @@ var trait = function (req, res, query){
 
 	page = fs.readFileSync('modele_jeu.html', 'utf-8');
 
-	for (i=0; i<12; i++){
+	for (i=0; i<8; i++){
 		page = page.supplant(game_data.tableau[i]);
 	}
 

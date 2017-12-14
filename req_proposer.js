@@ -20,7 +20,6 @@ var trait = function (req, res, query){
 	var tableau = game_data.tableau;
 	var ligne= tableau[game_data.essai];
 	var couleurs_joueur = [];
-	var tableau;
 
 	couleurs_joueur[0] = query.couleur1;
 	couleurs_joueur[1] = query.couleur2;
@@ -51,10 +50,10 @@ var trait = function (req, res, query){
 		}
 
 		return col;
-	}
+	};
 
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
-	if(game_data.essai === 11){
+	if(game_data.essai === 7){
 
 		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 
@@ -401,70 +400,6 @@ var trait = function (req, res, query){
 					ligne.marqueur88 = "noir";
 				}
 
-
-			} else if (game_data.essai === 8) {
-				ligne.marqueur19 = couleurs_joueur[0];
-				ligne.marqueur29 = couleurs_joueur[1];
-				ligne.marqueur39 = couleurs_joueur[2];
-				ligne.marqueur49 = couleurs_joueur[3];
-
-				if (couleurs_joueur[0]===game_data.secret[0]){
-					ligne.marqueur59 = "noir";
-				}
-				if (couleurs_joueur[1]===game_data.secret[1]){
-					ligne.marqueur69 = "noir";
-				}
-				if (couleurs_joueur[2]===game_data.secret[2]){
-					ligne.marqueur79 = "noir";
-				}
-				if (couleurs_joueur[3]===game_data.secret[3]){
-					ligne.marqueur89 = "noir";
-				}
-
-
-
-			} else if (game_data.essai === 9) {
-				ligne.marqueur110 = couleurs_joueur[0];
-				ligne.marqueur210 = couleurs_joueur[1];
-				ligne.marqueur310 = couleurs_joueur[2];
-				ligne.marqueur410= couleurs_joueur[0];
-
-				if (couleurs_joueur[0]===game_data.secret[0]){
-					ligne.marqueur510 = "noir";
-				}
-				if (couleurs_joueur[1]===game_data.secret[1]){
-					ligne.marqueur610 = "noir";
-				}
-				if (couleurs_joueur[2]===game_data.secret[2]){
-					ligne.marqueur710 = "noir";
-				}
-				if (couleurs_joueur[3]===game_data.secret[3]){
-					ligne.marqueur810 = "noir";
-				}
-
-
-
-			} else if (game_data.essai === 10) {
-				ligne.marqueur111 = couleurs_joueur[0];
-				ligne.marqueur211 = couleurs_joueur[1];
-				ligne.marqueur311 = couleurs_joueur[2];
-				ligne.marqueur411 = couleurs_joueur[3];
-
-				if (couleurs_joueur[0]===game_data.secret[0]){
-					ligne.marqueur511 = "noir";
-				}
-				if (couleurs_joueur[1]===game_data.secret[1]){
-					ligne.marqueur611 = "noir";
-				}
-				if (couleurs_joueur[2]===game_data.secret[2]){
-					ligne.marqueur711 = "noir";
-				}
-				if (couleurs_joueur[3]===game_data.secret[3]){
-					ligne.marqueur811 = "noir";
-				}
-
-
-
 			}
 
 			// INCREMENTAION DU NBR D'ESSAIES
@@ -475,7 +410,7 @@ var trait = function (req, res, query){
 			marqueurs.pseudo = query.pseudo;
 			page = page.supplant(marqueurs);
 
-			for (i=0; i<12; i++){
+			for (i=0; i<8; i++){
 				page = page.supplant(game_data.tableau[i]);
 			}
 			game_data = JSON.stringify(game_data);
@@ -485,7 +420,7 @@ var trait = function (req, res, query){
 			res.write(page);
 			res.end();
 		}
-	}
+	};
 
 
 }
