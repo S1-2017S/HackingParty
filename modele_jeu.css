@@ -17,8 +17,9 @@ body, html {
 	text-align : center;
 	}
 
-#bouton {
-	min-width : 175px;
+a {
+	color : white;
+	width : 11,5%;
 	font-size : 20px;
 	float : left;
 	position : absolute;
