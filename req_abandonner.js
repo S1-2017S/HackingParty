@@ -21,7 +21,7 @@ var trait = function (req, res, query) {
 	marqueurs.pseudo = query.pseudo;
 	marqueurs.win = "";
 	marqueurs.lose = "";
-	marqueurs.abandon = "Dommage :( vous fairez mieux la prochaine fois !"
+	marqueurs.abandon = "Dommage, en espérant que vous reviendrez."
 	page = page.supplant(marqueurs);
 
 	res.writeHead(200, {'Content-Type' : 'text/html'});

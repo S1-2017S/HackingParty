@@ -58,7 +58,7 @@ var trait = function (req, res, query){
 		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 
 
-		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison.";
+		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret;
 		marqueurs.abandon = "";
 		marqueurs.win = "";
 		marqueurs.pseudo = query.pseudo;
@@ -85,13 +85,13 @@ var trait = function (req, res, query){
 			// INCREMENTAION DU NBR D'ESSAIES
 			game_data.essai++;
 
-			game_data = JSON.stringify(game_data);
-			fs.writeFileSync(query.pseudo +".json", game_data, "UTF-8");
-
 			marqueurs.pseudo = query.pseudo;
 			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
 			marqueurs.lose = "";
-			marqueurs.win = "Vous avez réussi à trouver la combinaison";
+			marqueurs.win = "Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s).";
+			game_data = JSON.stringify(game_data);
+			fs.writeFileSync(query.pseudo +".json", game_data, "UTF-8");
+
 			marqueurs.abandon = "";
 			page = page.supplant(marqueurs);
 
@@ -386,18 +386,37 @@ var trait = function (req, res, query){
 				ligne.marqueur28 = couleurs_joueur[1];
 				ligne.marqueur38 = couleurs_joueur[2];
 				ligne.marqueur48 = couleurs_joueur[3];
+				tableau = choix_pion_ordi(couleurs_joueur, game_data.secret);
+				if (tableau[0] === 0) {
+					ligne.marqueur58 = game_data.couleurs_ordi[0];
+				} else if (tableau[0] === 1) {
+					ligne.marqueur58 = game_data.couleurs_ordi[1];
+				} else {
+					ligne.marqueur58 = game_data.couleurs_ordi[2];
+				}
 
-				if (couleurs_joueur[0]===game_data.secret[0]){
-					ligne.marqueur58 = "noir";
+				if (tableau[1] === 0) {
+					ligne.marqueur68 = game_data.couleurs_ordi[0];
+				} else if (tableau[1] === 1) {
+					ligne.marqueur68 = game_data.couleurs_ordi[1];
+				} else {
+					ligne.marqueur68 = game_data.couleurs_ordi[2];
 				}
-				if (couleurs_joueur[1]===game_data.secret[1]){
-					ligne.marqueur68 = "noir";
+
+				if (tableau[2] === 0) {
+					ligne.marqueur78 = game_data.couleurs_ordi[0];
+				} else if (tableau[2] === 1) {
+					ligne.marqueur78 = game_data.couleurs_ordi[1];
+				} else {
+					ligne.marqueur78 = game_data.couleurs_ordi[2];
 				}
-				if (couleurs_joueur[2]===game_data.secret[2]){
-					ligne.marqueur78 = "noir";
-				}
-				if (couleurs_joueur[3]===game_data.secret[3]){
-					ligne.marqueur88 = "noir";
+
+				if (tableau[3] === 0) {
+					ligne.marqueur88 = game_data.couleurs_ordi[0];
+				} else if (tableau[3] === 1) {
+					ligne.marqueur88 = game_data.couleurs_ordi[1];
+				} else {
+					ligne.marqueur88 = game_data.couleurs_ordi[2];
 				}
 
 			}
@@ -420,10 +439,10 @@ var trait = function (req, res, query){
 			res.write(page);
 			res.end();
 		}
-	};
+	}
 
 
-}
+};
 //---------------------------------------------------------------------
 module.exports = trait;
 
