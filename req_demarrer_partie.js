@@ -138,7 +138,7 @@ var trait = function (req, res, query){
 
 	// AFFICHAGE DE LA modele_jeu
 
-	page = fs.readFileSync('modele_jeu.html', 'utf-8');
+	page = fs.readFileSync('./modele_jeu.html', 'utf-8');
 
 	for (i=0; i<8; i++){
 		page = page.supplant(game_data.tableau[i]);
@@ -149,7 +149,7 @@ var trait = function (req, res, query){
 	page = page.supplant(marqueurs);
 
 	game_data = JSON.stringify(game_data);
-	fs.writeFileSync(query.pseudo +".json", game_data, "UTF-8");
+	fs.writeFileSync(query.pseudo+ ".json", game_data, "UTF-8");
 
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	res.write(page);

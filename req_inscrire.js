@@ -25,7 +25,7 @@ var trait = function (req, res, query) {
 
 	// ON LIT LES COMPTES EXISTANTS
 
-	contenu_fichier = fs.readFileSync("membres.json", 'utf-8');    
+	contenu_fichier = fs.readFileSync("./membres.json", 'utf-8');    
 	listeMembres = JSON.parse(contenu_fichier);
 
 	// ON VERIFIE QUE LE COMPTE N'EXISTE PAS DEJA
@@ -63,7 +63,7 @@ var trait = function (req, res, query) {
 
 		contenu_fichier = JSON.stringify(listeMembres);
 
-		fs.writeFileSync("membres.json", contenu_fichier, 'utf-8');
+		fs.writeFileSync("./membres.json", contenu_fichier, 'utf-8');
 	}
 
 
@@ -72,7 +72,7 @@ var trait = function (req, res, query) {
 	if(trouve === true) {
 		// SI CREATION PAS OK, ON REAFFICHE PAGE FORMULAIRE AVEC ERREUR
 
-		page = fs.readFileSync('modele_formulaire_inscription.html', 'utf-8');
+		page = fs.readFileSync('./modele_formulaire_inscription.html', 'utf-8');
 		marqueurs = {};
 		marqueurs.erreur = "ERREUR : ce compte existe déjà";
 		marqueurs.pseudo = query.pseudo;
@@ -81,7 +81,7 @@ var trait = function (req, res, query) {
 	}else if(verif_password === false){
 		// SI CONFIRMATION MDP PAS OK, ON REAFFICHE PAGE FORMULAIRE AVEC ERREUR
 
-		page = fs.readFileSync('modele_formulaire_inscription.html', 'utf-8');
+		page = fs.readFileSync('./modele_formulaire_inscription.html', 'utf-8');
 		marqueurs = {};
 		marqueurs.erreur = "ERREUR : la confirmation du mot de passe est fausse";
 		marqueurs.pseudo = query.pseudo;
@@ -90,7 +90,7 @@ var trait = function (req, res, query) {
 	} else {
 		// SI CREATION OK, ON ENVOIE PAGE DE CONFIRMATION
 
-		page = fs.readFileSync('modele_confirmation_inscription.html', 'UTF-8');
+		page = fs.readFileSync('./modele_confirmation_inscription.html', 'UTF-8');
 		marqueurs = {};
 		marqueurs.pseudo = query.pseudo;
 		marqueurs.password = query.password;

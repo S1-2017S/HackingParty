@@ -55,7 +55,7 @@ var trait = function (req, res, query){
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
 	if(game_data.essai === 7){
 
-		page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
+		page = fs.readFileSync('./modele_fin_de_partie.html', 'utf-8');
 
 
 		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret;
@@ -86,7 +86,7 @@ var trait = function (req, res, query){
 			game_data.essai++;
 
 			marqueurs.pseudo = query.pseudo;
-			page = fs.readFileSync('modele_fin_de_partie.html', 'utf-8');
+			page = fs.readFileSync('./modele_fin_de_partie.html', 'utf-8');
 			marqueurs.lose = "";
 			marqueurs.win = "Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s).";
 			game_data = JSON.stringify(game_data);
@@ -425,7 +425,7 @@ var trait = function (req, res, query){
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
 
-			page = fs.readFileSync('modele_jeu.html', 'utf-8');
+			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
 			marqueurs.pseudo = query.pseudo;
 			page = page.supplant(marqueurs);
 

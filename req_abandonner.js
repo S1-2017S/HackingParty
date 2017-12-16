@@ -15,7 +15,7 @@ var trait = function (req, res, query) {
 	
 	// ABANDON DE LA PARTIE
 
-	page = fs.readFileSync('modele_fin_de_partie.html', 'Utf-8')
+	page = fs.readFileSync('./modele_fin_de_partie.html', 'Utf-8')
 	
 	marqueurs = {};
 	marqueurs.pseudo = query.pseudo;

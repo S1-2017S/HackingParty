@@ -15,7 +15,7 @@ var trait = function (req, res, query) {
 
 	// RETOUR SUR LA PAGE ACCUEIL MEMBRES
 
-	page = fs.readFileSync('modele_accueil_membre.html', 'utf-8');
+	page = fs.readFileSync('./modele_accueil_membre.html', 'utf-8');
 	
 	marqueurs.pseudo = query.pseudo;
 	page = page.supplant(marqueurs);
