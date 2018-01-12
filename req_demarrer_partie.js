@@ -9,7 +9,7 @@ var fs = require("fs");
 require('remedial');
 
 var trait = function (req, res, query){
-	
+
 	var marqueurs;
 	var page;
 	var data;
@@ -27,7 +27,7 @@ var trait = function (req, res, query){
 	game_data.secret = secret;
 	game_data.essai = 0;
 
-// COMMENTAIRE MARQUEUR 
+	// COMMENTAIRE MARQUEUR 
 
 	var ligne1 = {};
 
@@ -105,7 +105,7 @@ var trait = function (req, res, query){
 	ligne7.marqueur67 = "\n";
 	ligne7.marqueur77 = "\n";
 	ligne7.marqueur87 = "\n";
-	
+
 	var ligne8 = {};
 
 	ligne8.marqueur18 = "\n";
@@ -116,7 +116,7 @@ var trait = function (req, res, query){
 	ligne8.marqueur68 = "\n";
 	ligne8.marqueur78 = "\n";
 	ligne8.marqueur88 = "\n";
-	
+
 
 	tableau[0] = ligne1;
 	tableau[1] = ligne2;
@@ -145,6 +145,11 @@ var trait = function (req, res, query){
 	}
 
 	marqueurs = {}
+	//marqueurs.pseudo = query.pseudo;
+	marqueurs.marqueur00 = "<tr> <th>Couleurs : </th> </tr> <tr> <td class='couleurs'> <form action='req_proposer' method='GET'> <select name='couleur1'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option>   <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur2'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur3'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur4'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='valider'> <input type='submit' name='valider' value='Valider'> <input type='hidden' name='pseudo' value={pseudo}> </form> </td> </tr>";
+
+	page = page.supplant(marqueurs);
+
 	marqueurs.pseudo = query.pseudo;
 	page = page.supplant(marqueurs);
 

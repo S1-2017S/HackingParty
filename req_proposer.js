@@ -55,13 +55,16 @@ var trait = function (req, res, query){
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
 	if(game_data.essai === 7){
 
-		page = fs.readFileSync('./modele_fin_de_partie.html', 'utf-8');
+		page = fs.readFileSync('./modele_jeu.html', 'utf-8');
 
 
-		marqueurs.lose = "Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret;
-		marqueurs.abandon = "";
-		marqueurs.win = "";
+		marqueurs.marqueur00 = "Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret + " <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
+
+		page = page.supplant(marqueurs);
 		marqueurs.pseudo = query.pseudo;
+		for (i=0; i<8; i++){
+			page = page.supplant(game_data.tableau[i]);
+		}
 		page = page.supplant(marqueurs);
 		res.writeHead(200, {'Content-Type': 'text/html'});
 		res.write(page);
@@ -85,10 +88,14 @@ var trait = function (req, res, query){
 			// INCREMENTAION DU NBR D'ESSAIES
 			game_data.essai++;
 
+			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
+			marqueurs.marqueur00 = "Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s)." + "<form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
+
+			page = page.supplant(marqueurs);
 			marqueurs.pseudo = query.pseudo;
-			page = fs.readFileSync('./modele_fin_de_partie.html', 'utf-8');
-			marqueurs.lose = "";
-			marqueurs.win = "Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s).";
+			for (i=0; i<8; i++){
+				page = page.supplant(game_data.tableau[i]);
+			}
 			game_data = JSON.stringify(game_data);
 			fs.writeFileSync(query.pseudo +".json", game_data, "UTF-8");
 
@@ -424,8 +431,10 @@ var trait = function (req, res, query){
 			// INCREMENTAION DU NBR D'ESSAIES
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
-
 			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
+			marqueurs.marqueur00 = "<tr> <th>Couleurs : </th> </tr> <tr> <td class='couleurs'> <form action='req_proposer' method='GET'> <select name='couleur1'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option>   <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur2'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur3'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur4'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='valider'> <input type='submit' name='valider' value='Valider'> <input type='hidden' name='pseudo' value={pseudo}> </form> </td> </tr>";
+
+			page = page.supplant(marqueurs);
 			marqueurs.pseudo = query.pseudo;
 			page = page.supplant(marqueurs);
 
