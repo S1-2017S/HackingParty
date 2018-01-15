@@ -20,6 +20,7 @@ var trait = function (req, res, query){
 	var tableau = game_data.tableau;
 	var ligne= tableau[game_data.essai];
 	var couleurs_joueur = [];
+	var couleur = game_data.couleurs;
 
 	couleurs_joueur[0] = query.couleur1;
 	couleurs_joueur[1] = query.couleur2;
@@ -52,13 +53,34 @@ var trait = function (req, res, query){
 		return col;
 	};
 
+	var image = function (couleur,couleur_j){
+		var i=0;
+		for (i=0; i<4; i++) {
+			if (couleur_j[i] === "bleu"){
+				couleur_j[i] = couleur[0];
+			} else if (couleur_j[i] === "rouge"){
+				couleur_j[i] = couleur[1];
+			} else if (couleur_j[i] === "jaune"){
+				couleur_j[i] = couleur[2];
+			} else if (couleur_j[i] === "vert"){
+				couleur_j[i] = couleur[3];
+			} else if (couleur_j[i] === "violet"){
+				couleur_j[i] = couleur[4];
+			} else {
+				couleur_j[i] = couleur[5];
+			}
+		}
+		return couleur_j;
+	}
+	couleurs_joueur = image (couleur, couleurs_joueur);
+
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
 	if(game_data.essai === 7){
 
 		page = fs.readFileSync('./modele_jeu.html', 'utf-8');
 
 
-		marqueurs.marqueur00 = "Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret + " <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
+		marqueurs.marqueur00 = "<br>Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret + "   <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
 
 		page = page.supplant(marqueurs);
 		marqueurs.pseudo = query.pseudo;
@@ -89,7 +111,7 @@ var trait = function (req, res, query){
 			game_data.essai++;
 
 			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
-			marqueurs.marqueur00 = "Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s)." + "<form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
+			marqueurs.marqueur00 = "<br>Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s)." + "   <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
 
 			page = page.supplant(marqueurs);
 			marqueurs.pseudo = query.pseudo;
