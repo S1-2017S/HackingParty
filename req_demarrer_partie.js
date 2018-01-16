@@ -2,6 +2,7 @@
 //Traitement de "req_demarrer_partie"
 //Auteur : groupe HackingParty
 //Version : 20/11/2017
+//Jojo t'as merder
 //============================================================================
 "use strict";
 
