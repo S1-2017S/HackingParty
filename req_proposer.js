@@ -22,17 +22,11 @@ var trait = function (req, res, query){
 	var couleurs_joueur = [];
 	var couleur = game_data.couleurs;
 
-	couleurs_joueur[0] = query.couleur1;
-	couleurs_joueur[1] = query.couleur2;
-	couleurs_joueur[2] = query.couleur3;
-	couleurs_joueur[3] = query.couleur4;
-
-
+	//FONCTION CHOIX PION ORDI
 	var choix_pion_ordi = function (couleur, secret){
 		var i;
 		var j;
 		var col = [0,0,0,0];
-		var test;
 
 		for (i=0; i<4; i++){
 			if (couleur[i] === secret[i]){
@@ -41,8 +35,6 @@ var trait = function (req, res, query){
 		}
 
 		for (i=0; i<4; i++){
-			test = 0;
-
 			for (j=0; j<4; j++){
 				if (couleur[i] === secret[j] && col[j] !== 2 && col[i] !== 2){
 					col[i] = 1;
@@ -72,13 +64,14 @@ var trait = function (req, res, query){
 		}
 		return couleur_j;
 	}
-	couleurs_joueur = image (couleur, couleurs_joueur);
+	
 
 	// ESSAIE EPUISER, AFFICHAGE PAGE FIN DE PARTIE AVEC MESSAGE DE LOSE
 	if(game_data.essai === 7){
 
 		page = fs.readFileSync('./modele_jeu.html', 'utf-8');
-
+		
+		marqueurs.marqueur01 = "";
 
 		marqueurs.marqueur00 = "<br>Vous n'avez pas réussi à trouver la combinaison. La bonne combinaison était: " + game_data.secret + "   <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
 
@@ -95,8 +88,13 @@ var trait = function (req, res, query){
 
 
 	}else{
-
-
+		
+		//VERIFICATION VICTOIRE
+		couleurs_joueur[0] = query.couleur1;
+		couleurs_joueur[1] = query.couleur2;
+		couleurs_joueur[2] = query.couleur3;
+		couleurs_joueur[3] = query.couleur4;
+		couleurs_joueur = image (couleur, couleurs_joueur);
 		for (i=0; i<4; i++){
 			if (game_data.secret[i] === couleurs_joueur[i]){
 				verif++;
@@ -109,6 +107,19 @@ var trait = function (req, res, query){
 		if (verif === 4){
 			// INCREMENTAION DU NBR D'ESSAIES
 			game_data.essai++;
+
+			marqueurs.marqueur01 = "";
+
+			ligne.marqueur18 = couleurs_joueur[0];
+			ligne.marqueur28 = couleurs_joueur[1];
+			ligne.marqueur38 = couleurs_joueur[2];
+			ligne.marqueur48 = couleurs_joueur[3];				
+			ligne.marqueur58 = game_data.couleurs_ordi[2];
+			ligne.marqueur68 = game_data.couleurs_ordi[2];
+			ligne.marqueur78 = game_data.couleurs_ordi[2];
+			ligne.marqueur88 = game_data.couleurs_ordi[2];
+
+
 
 			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
 			marqueurs.marqueur00 = "<br>Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s)." + "   <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
@@ -129,7 +140,16 @@ var trait = function (req, res, query){
 			res.end();
 
 		}else{
+			
+			
 			// AFFICHAGE DES CHOIX DU JOUEUR
+
+			page = fs.readFileSync("./modele_jeu.html", 'utf-8');
+			
+			marqueurs.marqueur01 = "<form action='/req_abandonner' method='GET'> <button name='abandon' value='abandonner'> Abandonner la partie</button> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
+
+			page = page.supplant(marqueurs);
+			marqueurs.pseudo = query.pseudo;
 
 			if (game_data.essai === 0) {
 				tableau = choix_pion_ordi (couleurs_joueur, game_data.secret);
@@ -450,11 +470,14 @@ var trait = function (req, res, query){
 
 			}
 
-			// INCREMENTAION DU NBR D'ESSAIES
+			// INCREMENTAION DU NOMBRE D'ESSAIES
 			game_data.tableau[game_data.essai] = ligne;
 			game_data.essai++;
+			
+
+
 			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
-			marqueurs.marqueur00 = "<tr> <th>Couleurs : </th> </tr> <tr> <td class='couleurs'> <form action='req_proposer' method='GET'> <select name='couleur1'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option>   <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur2'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur3'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur4'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='valider'> <input type='submit' name='valider' value='Valider'> <input type='hidden' name='pseudo' value={pseudo}> </form> </td> </tr>";
+			marqueurs.marqueur00 = "<tr> <th>Couleurs: </th> </tr> <tr> <td class='couleurs'> <form action='req_proposer' method='GET'> <select name='couleur1'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option>   <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur2'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur3'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='couleurs'> <select name='couleur4'> <option value='bleu'>Bleu</option> <option value='rouge'>Rouge</option> <option value='jaune'>Jaune</option> <option value='vert'>Vert</option> <option value='violet'>Violet</option> <option value='orange'>Orange</option> </td> <td class='valider'> <input type='submit' name='valider' value='Valider'> <input type='hidden' name='pseudo' value={pseudo}> </form> </td> </tr>";
 
 			page = page.supplant(marqueurs);
 			marqueurs.pseudo = query.pseudo;
