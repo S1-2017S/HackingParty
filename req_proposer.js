@@ -122,7 +122,7 @@ var trait = function (req, res, query){
 
 
 			page = fs.readFileSync('./modele_jeu.html', 'utf-8');
-			marqueurs.marqueur00 = "<br>Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essaie(s)." + "   <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
+			marqueurs.marqueur00 = "<br>Félicitations, vous avez réussi à trouver la combinaison en : "+ game_data.essai+ " essai(s)." + "   <form action='/req_retour_page_accueil_membre'> <input type='submit' name='Return' value='Retour accueil membre'></a> <input type='hidden' name='pseudo' value='{pseudo}'> </form>";
 
 			page = page.supplant(marqueurs);
 			marqueurs.pseudo = query.pseudo;
